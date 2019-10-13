@@ -1,29 +1,31 @@
-import static edu.utils.ArrayUtils.printTable;
-
 import edu.collections.CollectionController;
-import edu.utils.Randomizers.RandomString;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class Main {
-
-    private static RandomString randomString = new RandomString();
-
     private static CollectionController table = new CollectionController(5,5);
+    
+    private static void print(Collection collection) {
+        table.printTable(collection);
+    }
 
+    private static void print() {
+        table.printTable();
+    }
+    
     public static void main(String[] args) {
 
         System.out.println(">>>>>>>>>> Iteration print <<<<<<<<<<<");
-        table.printTable();
+        print();
 
         int rowInd = 3;
         System.out.println(">>>>>>>>>>>> Row " + rowInd + " <<<<<<<<<<<");
-        table.printTable(table.getRow(rowInd));
+        print(table.getRow(rowInd));
 
         int columnInd = 3;
         System.out.println(">>>>>>>>>>>> Column " + columnInd + " <<<<<<<<<<<");
-        table.printTable(table.getColumn(columnInd));
+        print(table.getColumn(columnInd));
 
         Collection insert = new ArrayList();
 
@@ -33,12 +35,12 @@ public class Main {
 
         System.out.println(">>>>>>>>>> New row inserted " + rowInd + " <<<<<<<<<<<");
         table.setRow(insert,rowInd);
-        table.printTable();
+        print();
 
         Collection insertColumn = new ArrayList(insert);
                 insertColumn.add("__" + (insert.size() + 1) + "__");
         System.out.println(">>>>>>>>>> New column inserted " + columnInd + " <<<<<<<<<<<");
         table.setColumn(insertColumn,columnInd);
-        table.printTable();
+        print();
     }
 }

@@ -1,7 +1,5 @@
 package edu.utils.Randomizers;
 
-import edu.utils.Randomizers.RandomString;
-
 public class RandomArray {
 
     private static RandomString randomString = new RandomString();
