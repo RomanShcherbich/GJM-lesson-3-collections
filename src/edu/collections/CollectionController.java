@@ -58,23 +58,10 @@ public class CollectionController {
         this.table = randomArray.getRandomArray(columnCount,rowCount);
     }
 
-    public void arrayTableToCollection(String[][] table) {
+    private void arrayTableToCollection(String[][] table) {
         this.tableCol = arrayUtils.arrayToCollection(table);
     }
-
-    public Collection<Collection> getColumns(Collection collection) {
-        Collection columns = new ArrayList();
-
-        for (int i = 0; i < collection.size(); i++) {
-            Collection col = new ArrayList();
-            for (Iterator it = collection.iterator(); it.hasNext() ;) {
-                col.add(((ArrayList)it.next()).get(i));
-            }
-            columns.add(col);
-        }
-        return columns;
-    }
-
+    
     public Collection<Collection> getColumn(int columnInd) {
 
         Collection<Collection> table = new ArrayList();
@@ -134,22 +121,22 @@ public class CollectionController {
 
         Collection<Collection> table = new ArrayList();
 
-        int j = 1;
+        int i = 1;
         for (Iterator it = tableCol.iterator(); it.hasNext() ;) {
-            if (j == rowInd){
+            if (i == rowInd){
                 table.add(row);
             }
             table.add((Collection)it.next());
-            j++;
+            i++;
         }
         this.tableCol = table;
     }
 
-    public int getColumnCount() {
-        return ((ArrayList)tableCol).size();
+    private int getColumnCount() {
+        return ((ArrayList)((ArrayList)tableCol).get(0)).size();
     }
 
-    public int getRowCount() {
+    private int getRowCount() {
         return tableCol.size();
     }
 }
