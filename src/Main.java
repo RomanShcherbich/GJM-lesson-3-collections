@@ -14,6 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        printTable(table.getTable());
+
         System.out.println(">>>>>>>>>> Iteration print <<<<<<<<<<<");
         table.printTable();
 

@@ -62,6 +62,19 @@ public class CollectionController {
         this.tableCol = arrayUtils.arrayToCollection(table);
     }
 
+    public Collection<Collection> getColumns(Collection collection) {
+        Collection columns = new ArrayList();
+
+        for (int i = 0; i < collection.size(); i++) {
+            Collection col = new ArrayList();
+            for (Iterator it = collection.iterator(); it.hasNext() ;) {
+                col.add(((ArrayList)it.next()).get(i));
+            }
+            columns.add(col);
+        }
+        return columns;
+    }
+
     public Collection<Collection> getColumn(int columnInd) {
 
         Collection<Collection> table = new ArrayList();
